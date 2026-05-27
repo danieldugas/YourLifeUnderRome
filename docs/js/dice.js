@@ -18,9 +18,8 @@
     return out;
   }
 
-  // Fair integer in [1, 1000] using crypto when available.
-  function roll1000() {
-    var max = 1000;
+  // Fair integer in [1, max] using crypto when available.
+  function rollDie(max) {
     if (window.crypto && window.crypto.getRandomValues) {
       var range = 4294967296; // 2^32
       var limit = range - (range % max); // reject bias
@@ -29,6 +28,21 @@
       return (buf[0] % max) + 1;
     }
     return Math.floor(Math.random() * max) + 1;
+  }
+  function roll1000() { return rollDie(1000); }
+
+  // The hidden life (Cleopatra), handed to us by lives-index.js. The dice reach
+  // her about once in SECRET.odds throws — unless a quiet token sits in the URL.
+  var SECRET = window.SECRET || null;
+
+  function magicEngaged() {
+    if (!SECRET || !SECRET.magic) return false;
+    var url = (window.location.search + " " + window.location.hash).toLowerCase();
+    return url.indexOf(SECRET.magic) !== -1; // e.g. ?alea=iacta — "the die is cast"
+  }
+  function secretHit() {
+    if (!SECRET || !SECRET.odds) return false;
+    return rollDie(SECRET.odds) === 1;
   }
 
   function findLife(roll) {
@@ -47,7 +61,19 @@
     var photo = document.getElementById("die-photo");
     var result = document.getElementById("dice-result");
 
+    function renderSecret() {
+      readout.textContent = "✦"; // ✦ — a throw off the table
+      roman.textContent = "";
+      result.classList.remove("empty", "unrep");
+      result.classList.add("secret");
+      result.innerHTML =
+        '<p class="who">You are ' + SECRET.name + '.</p>' +
+        '<p class="what">' + SECRET.tagline + '</p>' +
+        '<a class="go" href="' + SECRET.url + '">Read this life &rarr;</a>';
+    }
+
     function render(roll) {
+      result.classList.remove("secret");
       readout.textContent = roll;
       roman.textContent = romanize(roll);
       var life = findLife(roll);
@@ -95,7 +121,11 @@
         } else {
           var final = roll1000();
           if (photo) photo.classList.remove("tumbling");
-          render(final);
+          if (magicEngaged() || secretHit()) {
+            renderSecret();
+          } else {
+            render(final);
+          }
           rolling = false;
           btn.disabled = false;
         }

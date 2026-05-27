@@ -120,6 +120,9 @@ h1.title .spqr{display:block;font-family:var(--caps);font-size:.2em;letter-spaci
   background:var(--gold);color:#3a2c10;text-decoration:none;padding:10px 22px;border-radius:2px;}
 .dice-result .go:hover{background:var(--gold-soft);}
 .dice-result.unrep .who{color:var(--ink);}
+.dice-result.secret{border-top-color:var(--gold);}
+.dice-result.secret .who{color:var(--gold);letter-spacing:.01em;}
+.dice-result.secret .what{color:var(--rubric);}
 
 /* ----------------------------------------------------- the 1000 weight bar */
 .thousand{margin:14px 0 6px;}
