@@ -5,7 +5,21 @@
       "Bash(curl -s -o /dev/null -w \"index.html        -> HTTP %{http_code}\\\\n\" http://127.0.0.1:8753/style-previews/index.html)",
       "Bash(curl -s -o /dev/null -w \"1-marble          -> HTTP %{http_code}\\\\n\" http://127.0.0.1:8753/style-previews/1-marble-and-gold.html)",
       "Bash(curl -s -o /dev/null -w \"2-fresco          -> HTTP %{http_code}\\\\n\" http://127.0.0.1:8753/style-previews/2-fresco-pompeii.html)",
-      "Bash(curl -s -o /dev/null -w \"3-mosaic          -> HTTP %{http_code}\\\\n\" http://127.0.0.1:8753/style-previews/3-mosaic-and-stone.html)"
+      "Bash(curl -s -o /dev/null -w \"3-mosaic          -> HTTP %{http_code}\\\\n\" http://127.0.0.1:8753/style-previews/3-mosaic-and-stone.html)",
+      "Bash(curl -s -I -m 12 \"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Pompeii_-_Thermopolium_-_MAN.jpg/320px-Pompeii_-_Thermopolium_-_MAN.jpg\")",
+      "Bash(curl -s -m 12 \"https://commons.wikimedia.org/w/api.php?action=query&format=json&meta=siteinfo\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" -m 12 \"https://example.com\")",
+      "Bash(python3 build.py --parse-check)",
+      "Bash(python3 search_commons.py)",
+      "Bash(python3 -c ' *)",
+      "Bash(PYTHONPATH=. python3 /tmp/linkcheck.py)",
+      "Bash(curl -s -o /dev/null -w 'ACOUP Bread Part I: HTTP %{http_code} \\(final: %{url_effective}\\)\\\\n' -L -A 'Mozilla/5.0 \\(X11; Linux x86_64; rv:124.0\\) Gecko/20100101 Firefox/124.0' https://acoup.blog/2020/07/24/collections-bread-how-did-they-make-it-part-i-farmers/)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"http://archive.org/wayback/available?url=acoup.blog/2020/07/24/collections-bread-how-did-they-make-it-part-i-farmers/\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"http://web.archive.org/cdx/search/cdx?url=acoup.blog*&matchType=domain&filter=original:.*\\(bread|farmer\\).*&output=text&fl=original&collapse=urlkey&limit=40\")",
+      "Bash(python3 build.py)",
+      "Bash(sed 's|docs/|  |')",
+      "Bash(python3 -)"
     ]
   }
 }

@@ -12,3 +12,4 @@ Some thoughts:
 - you can download and use actual mosaics, and images from wikimedia / museums etc. As many link as possible to actual museum pieces, bonus points if they have actually relevant backstories.
 - It would be cool to have a nice illustration of bone dice, or even a 3d render
 - It would be really good if we could link to as many sources as possible, inspired from example by Brett Devereaux's ancient rome series and the texts they link to
+- It would be great if pictures of ancient objects could be contrasted with colourful illustrations of daily life, where the ancient object is restored and put into context

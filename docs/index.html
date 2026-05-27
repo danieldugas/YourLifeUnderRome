@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ten Lives Under Rome</title>
+<meta name="description" content="A probabilistic portrait of who you would have been, had you been born somewhere in the Roman world between 100 BC and 420 AD.">
+<meta property="og:title" content="Ten Lives Under Rome">
+<meta property="og:description" content="A probabilistic portrait of who you would have been, had you been born somewhere in the Roman world between 100 BC and 420 AD.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M30 6 C22 18 8 18 8 30 C8 42 22 44 30 54 C38 44 52 42 52 30 C52 18 38 18 30 6 Z"/><circle cx="30" cy="30" r="3.5" fill="currentColor" stroke="none"/></svg>
+    Ten Lives Under Rome
+  </a>
+  <nav class="site-nav">
+    <a href="index.html#the-lives">The Ten Lives</a>
+    <a href="index.html#cast">Cast the Dice</a>
+    <a href="credits.html">Sources &amp; Credits</a>
+  </nav>
+</div></header>
+
+
+<main class="wrap">
+  <section class="hero">
+    <div class="ornament"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M30 6 C22 18 8 18 8 30 C8 42 22 44 30 54 C38 44 52 42 52 30 C52 18 38 18 30 6 Z"/><circle cx="30" cy="30" r="4" fill="currentColor" stroke="none"/></svg></div>
+    <h1 class="title">Ten Lives Under Rome<span class="spqr">S · P · Q · R</span></h1>
+    <p class="subtitle">A probabilistic portrait of who you would have been, had you been born somewhere in the Roman world between 100 BC and 420 AD.</p>
+    <div class="hero-sep"></div>
+  </section>
+
+  <section class="read">
+    <div class="rubric center">Sortes &middot; Cast the Lots</div>
+    <div class="dice-panel" id="cast">
+      <h2>Cast the Dice</h2>
+      <p class="hint">A throw of 1 to 1000 — where would fortune have placed you?</p>
+      <div class="die-stage">
+        <img class="die-photo" id="die-photo" src="images/dice/bone-dice.jpg" alt="Roman bone dice">
+        <div class="die-readout" id="die-readout"><span id="die-num">?</span><span class="roman" id="die-roman"></span></div>
+      </div>
+      <button class="roll-btn" id="roll-btn" type="button">Cast the dice</button>
+      <div class="dice-result empty" id="dice-result"></div>
+    </div>
+  </section>
+
+  <section class="read">
+    <div class="rubric">Incipit &middot; How to read this</div>
+    <p><strong>How to read the probability weights:</strong> Each profile is assigned a range out of 1,000. If you rolled a random number from 1 to 1,000, these ranges reflect roughly how likely you'd land in each life — based on demographics, social structure, and what historians estimate about population composition across the empire's lifespan. The ten profiles together account for about 940 of 1,000 possible lives. The remaining ~60 represent categories not profiled here: gladiators, priests, prostitutes, bandits, nomadic pastoralists on the frontier, miners, imperial bureaucrats, and the many children who died before age five and never lived long enough to have a "story" in the adult sense.</p>
+  </section>
+
+  <section>
+    <div class="rubric">The Roll of a Thousand Lives</div>
+    <div class="thousand"><div class="thousand-bar"><a class="c1" style="width:18.50%" href="lives/titus-caecilius.html" title="Titus Caecilius — Peasant Smallholder (1–185, 185/1000)"><span class="seg-num">I</span></a><a class="c2" style="width:14.00%" href="lives/kalasiris.html" title="Kalasiris — Agricultural Slave (186–325, 140/1000)"><span class="seg-num">II</span></a><a class="c3" style="width:17.50%" href="lives/helene.html" title="Helene — Provincial Woman (326–500, 175/1000)"><span class="seg-num">III</span></a><a class="c4" style="width:9.00%" href="lives/petronia-iusta.html" title="Petronia Iusta — Urban Plebeian Woman (501–590, 90/1000)"><span class="seg-num">IV</span></a><a class="c5" style="width:3.00%" href="lives/gaius-vibius-celer.html" title="Gaius Vibius Celer — Legionary (591–620, 30/1000)"><span class="seg-num"></span></a><a class="c6" style="width:0.30%" href="lives/publius-valerius-messalla.html" title="Publius Valerius Messalla — Senator (621–623, 3/1000)"><span class="seg-num"></span></a><a class="c7" style="width:5.50%" href="lives/successus.html" title="Successus — Freedman and Tavern Keeper (624–678, 55/1000)"><span class="seg-num">VII</span></a><a class="c8" style="width:13.00%" href="lives/boudiga.html" title="Boudiga — Rural Provincial Woman (679–808, 130/1000)"><span class="seg-num">VIII</span></a><a class="c9" style="width:2.50%" href="lives/aurelius-diza.html" title="Aurelius Diza — Auxiliary Cavalry Trooper (809–833, 25/1000)"><span class="seg-num"></span></a><a class="c10" style="width:7.20%" href="lives/flavius-marcellinus.html" title="Flavius Marcellinus — Minor Bureaucrat (834–905, 72/1000)"><span class="seg-num">X</span></a><span class="cun" style="width:9.50%" title="Unrepresented lives (906–1000, 95/1000)"><span class="seg-num"></span></span></div><div class="thousand-legend"><span class="key"><span class="sw c1"></span>I. Titus Caecilius (185)</span><span class="key"><span class="sw c2"></span>II. Kalasiris (140)</span><span class="key"><span class="sw c3"></span>III. Helene (175)</span><span class="key"><span class="sw c4"></span>IV. Petronia Iusta (90)</span><span class="key"><span class="sw c5"></span>V. Gaius Vibius Celer (30)</span><span class="key"><span class="sw c6"></span>VI. Publius Valerius Messalla (3)</span><span class="key"><span class="sw c7"></span>VII. Successus (55)</span><span class="key"><span class="sw c8"></span>VIII. Boudiga (130)</span><span class="key"><span class="sw c9"></span>IX. Aurelius Diza (25)</span><span class="key"><span class="sw c10"></span>X. Flavius Marcellinus (72)</span><span class="key"><span class="sw cun"></span>Unrepresented (95)</span></div></div>
+  </section>
+
+  <section id="the-lives">
+    <div class="rubric">The Ten Lives</div>
+    <div class="lives-grid"><a class="life-card" href="lives/titus-caecilius.html"><div class="thumb"><img src="images/titus-caecilius/lararium.jpg" alt="Titus Caecilius" loading="lazy"></div><div class="body"><span class="cap">Caput I</span><h3>Titus Caecilius</h3><p class="role">Peasant Smallholder</p><p class="era">Central Italy &middot; Late Republic · 105–42 BC</p><div class="mini-bar"><span class="c1" style="margin-left:0.00%;width:18.50%"></span></div><span class="mini-label">Roll 1–185 &middot; 185 / 1000</span></div></a><a class="life-card" href="lives/kalasiris.html"><div class="thumb"><img src="images/kalasiris/estate.jpg" alt="Kalasiris" loading="lazy"></div><div class="body"><span class="cap">Caput II</span><h3>Kalasiris</h3><p class="role">Agricultural Slave</p><p class="era">Sicily &middot; Late Republic · 135–86 BC</p><div class="mini-bar"><span class="c2" style="margin-left:18.50%;width:14.00%"></span></div><span class="mini-label">Roll 186–325 &middot; 140 / 1000</span></div></a><a class="life-card" href="lives/helene.html"><div class="thumb"><img src="images/helene/fayum.jpg" alt="Helene" loading="lazy"></div><div class="body"><span class="cap">Caput III</span><h3>Helene</h3><p class="role">Provincial Woman</p><p class="era">Roman Egypt &middot; Antonine era · 148–198 AD</p><div class="mini-bar"><span class="c3" style="margin-left:32.50%;width:17.50%"></span></div><span class="mini-label">Roll 326–500 &middot; 175 / 1000</span></div></a><a class="life-card" href="lives/petronia-iusta.html"><div class="thumb"><img src="images/petronia-iusta/baker.jpg" alt="Petronia Iusta" loading="lazy"></div><div class="body"><span class="cap">Caput IV</span><h3>Petronia Iusta</h3><p class="role">Urban Plebeian Woman</p><p class="era">Rome &middot; Flavian–Trajanic · 55–112 AD</p><div class="mini-bar"><span class="c4" style="margin-left:50.00%;width:9.00%"></span></div><span class="mini-label">Roll 501–590 &middot; 90 / 1000</span></div></a><a class="life-card" href="lives/gaius-vibius-celer.html"><div class="thumb"><img src="images/gaius-vibius-celer/caelius.jpg" alt="Gaius Vibius Celer" loading="lazy"></div><div class="body"><span class="cap">Caput V</span><h3>Gaius Vibius Celer</h3><p class="role">Legionary</p><p class="era">Rhine frontier &middot; Augustan–Tiberian · 12 BC–31 AD</p><div class="mini-bar"><span class="c5" style="margin-left:59.00%;width:3.00%"></span></div><span class="mini-label">Roll 591–620 &middot; 30 / 1000</span></div></a><a class="life-card" href="lives/publius-valerius-messalla.html"><div class="thumb"><img src="images/publius-valerius-messalla/togatus.jpg" alt="Publius Valerius Messalla" loading="lazy"></div><div class="body"><span class="cap">Caput VI</span><h3>Publius Valerius Messalla</h3><p class="role">Senator</p><p class="era">Rome &middot; Augustan–Claudian · 20 BC–54 AD</p><div class="mini-bar"><span class="c6" style="margin-left:62.00%;width:0.80%"></span></div><span class="mini-label">Roll 621–623 &middot; 3 / 1000</span></div></a><a class="life-card" href="lives/successus.html"><div class="thumb"><img src="images/successus/thermopolium.jpg" alt="Successus" loading="lazy"></div><div class="body"><span class="cap">Caput VII</span><h3>Successus</h3><p class="role">Freedman and Tavern Keeper</p><p class="era">Pompeii &middot; Early Empire · 32–79 AD</p><div class="mini-bar"><span class="c7" style="margin-left:62.30%;width:5.50%"></span></div><span class="mini-label">Roll 624–678 &middot; 55 / 1000</span></div></a><a class="life-card" href="lives/boudiga.html"><div class="thumb"><img src="images/boudiga/gorgon.jpg" alt="Boudiga" loading="lazy"></div><div class="body"><span class="cap">Caput VIII</span><h3>Boudiga</h3><p class="role">Rural Provincial Woman</p><p class="era">Roman Britain &middot; Claudian–Trajanic · 42–103 AD</p><div class="mini-bar"><span class="c8" style="margin-left:67.80%;width:13.00%"></span></div><span class="mini-label">Roll 679–808 &middot; 130 / 1000</span></div></a><a class="life-card" href="lives/aurelius-diza.html"><div class="thumb"><img src="images/aurelius-diza/mithras.jpg" alt="Aurelius Diza" loading="lazy"></div><div class="body"><span class="cap">Caput IX</span><h3>Aurelius Diza</h3><p class="role">Auxiliary Cavalry Trooper</p><p class="era">Danube frontier &middot; Crisis of the 3rd c. · 233–268 AD</p><div class="mini-bar"><span class="c9" style="margin-left:80.80%;width:2.50%"></span></div><span class="mini-label">Roll 809–833 &middot; 25 / 1000</span></div></a><a class="life-card" href="lives/flavius-marcellinus.html"><div class="thumb"><img src="images/flavius-marcellinus/missorium.jpg" alt="Flavius Marcellinus" loading="lazy"></div><div class="body"><span class="cap">Caput X</span><h3>Flavius Marcellinus</h3><p class="role">Minor Bureaucrat</p><p class="era">Constantinople &middot; Late Empire · 375–421 AD</p><div class="mini-bar"><span class="c10" style="margin-left:83.30%;width:7.20%"></span></div><span class="mini-label">Roll 834–905 &middot; 72 / 1000</span></div></a></div>
+    <p class="read" style="font-style:italic;color:var(--ink-soft)">
+      The remaining 95 of 1000 — Priests, gladiators, prostitutes, bandits, miners, nomadic pastoralists, imperial bureaucrats — and the many children who died before age five and never lived long enough to have a story in the adult sense.</p>
+  </section>
+</main>
+
+
+<footer class="site-footer"><div class="inner">
+  <p class="disclaimer">These profiles are composites — fictional individuals built from demographic data, archaeology, papyri and the literary record. Every detail (mortality, food, pay, distances, dates) is drawn from the evidence; no single person is &ldquo;real.&rdquo;</p>
+  <p>Ten Lives Under Rome<br><a href="credits.html">Image credits &amp; sources &rarr;</a></p>
+</div></footer>
+<script src="js/lives-index.js"></script>
+<script src="js/dice.js"></script>
+</body>
+</html>

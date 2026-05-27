@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Local scratch
+retry.py
+/tmp/
+
+# NOTE: docs/ (including docs/images and docs/data) IS committed on purpose —
+# it is the static site GitHub Pages serves.
