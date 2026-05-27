@@ -7,6 +7,8 @@ The goal is to turn this into a website, with a nice landing page (ancient rome 
 Let's create the first draft together, it will be statistically served, on github.
 
 Some thoughts:
-- you can download and use actual mosaics, and images from wikimedia / museums etc
+
 - We should add some illustrations of the daily lives of these personae, for example what their bathroom might look like, the family in front of the house, where they would get groceries / food from / or their pantry
+- you can download and use actual mosaics, and images from wikimedia / museums etc. As many link as possible to actual museum pieces, bonus points if they have actually relevant backstories.
 - It would be cool to have a nice illustration of bone dice, or even a 3d render
+- It would be really good if we could link to as many sources as possible, inspired from example by Brett Devereaux's ancient rome series and the texts they link to
