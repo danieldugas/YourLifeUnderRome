@@ -1,7 +1,9 @@
-# Ten Lives Under Rome
+# Your Life Under Rome
 
 *A probabilistic portrait of who you would have been, had you been born somewhere in the
 Roman world between 100 BC and 420 AD.*
+
+Live at **[YourLifeUnderRome.com](https://YourLifeUnderRome.com)** (GitHub Pages, custom domain).
 
 A static website built from ten richly-researched composite lives. Roll the dice (1–1000)
 and fortune drops you into one of them — a peasant, a slave, a senator, a legionary, a
@@ -60,10 +62,16 @@ python3 -m http.server -d docs 8000
 
 ## Deploy to GitHub Pages
 
-1. Create a repo and push everything (including `docs/`, which carries the images).
-2. In **Settings → Pages**, set **Source: Deploy from a branch**, branch `main`, folder **`/docs`**.
+1. Push everything (including `docs/`, which carries the images) to the GitHub repo
+   (`github.com/danieldugas/YourLifeUnderRome`).
+2. In **Settings → Pages**, set **Source: Deploy from a branch**, pick the publishing branch,
+   folder **`/docs`**.
 3. GitHub serves it as-is — there is no build step on their side. (A `.nojekyll` file is included
    so asset folders are served verbatim.)
+4. **Custom domain.** `docs/CNAME` already contains `YourLifeUnderRome.com` (written by `build.py`).
+   In **Settings → Pages → Custom domain**, enter `YourLifeUnderRome.com`. At the registrar, point
+   the apex with GitHub's four `A` records (185.199.108–111.153) and add a `www` `CNAME` →
+   `danieldugas.github.io`. Then enable **Enforce HTTPS**.
 
 ## Editing / extending
 

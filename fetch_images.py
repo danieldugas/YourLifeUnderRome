@@ -26,7 +26,7 @@ DATA_DIR = ROOT / "docs" / "data"
 CREDITS = DATA_DIR / "image_credits.json"
 
 API = "https://commons.wikimedia.org/w/api.php"
-UA = "TenLivesUnderRome/0.1 (educational static site; ddugas@flexion.ai)"
+UA = "YourLifeUnderRome/0.1 (educational static site; ddugas@flexion.ai)"
 THUMB_WIDTH = 1400
 FORCE = "--force" in sys.argv
 

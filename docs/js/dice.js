@@ -1,4 +1,4 @@
-/* Ten Lives Under Rome — the roll of the dice (sortes).
+/* Your Life Under Rome — the roll of the dice (sortes).
    Depends on window.LIVES (array) and window.UNREP, generated into
    js/lives-index.js by build.py. */
 (function () {

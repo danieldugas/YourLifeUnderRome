@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Ten Lives Under Rome — static site generator.
+Your Life Under Rome — static site generator.
 
 Single source of truth for the prose is 1_first_draft_roman_lives.md.
 build.py parses that file into structured profiles, merges per-profile
@@ -25,6 +25,9 @@ ROOT = Path(__file__).resolve().parent
 DRAFT = ROOT / "1_first_draft_roman_lives.md"
 DOCS = ROOT / "docs"
 TEMPLATES = ROOT / "templates"
+
+SITE_TITLE = "Your Life Under Rome"
+SITE_DOMAIN = "YourLifeUnderRome.com"
 
 EN_DASH = "–"
 EM_DASH = "—"
@@ -94,7 +97,7 @@ def parse_draft(text):
             profiles.append(parse_profile(chunk, m))
             continue
 
-        if first.strip().startswith("# Ten Lives Under Rome"):
+        if first.strip().startswith("# "):  # the single top-level title chunk
             intro = parse_intro(chunk)
             continue
         # summary table + disclaimer chunks: ignored (data comes from profiles)
@@ -107,7 +110,7 @@ def parse_intro(chunk):
     tagline = ""
     howto = ""
     for p in paras:
-        if p.startswith("# Ten Lives"):
+        if p.startswith("# "):  # the title heading itself
             continue
         if p.startswith("*") and p.endswith("*") and not tagline:
             tagline = p.strip("*").strip()
@@ -351,7 +354,7 @@ def render_index(template, intro, profiles, credits):
 <main class="wrap">
   <section class="hero">
     <div class="ornament">{ORNAMENT_SVG}</div>
-    <h1 class="title">Ten Lives Under Rome<span class="spqr">S · P · Q · R</span></h1>
+    <h1 class="title">{SITE_TITLE}<span class="spqr">S · P · Q · R</span></h1>
     <p class="subtitle">{esc(tagline)}</p>
     <div class="hero-sep"></div>
   </section>
@@ -392,7 +395,7 @@ def render_index(template, intro, profiles, credits):
                 f'<script src="{rel}js/dice.js"></script>')
     return render_base(
         template,
-        title="Ten Lives Under Rome",
+        title=SITE_TITLE,
         desc=tagline or "A probabilistic portrait of life across the Roman world.",
         rel=rel, body=body, body_end=body_end)
 
@@ -489,7 +492,7 @@ def render_profile(template, p, prev_p, next_p, credits):
     desc = p["epitome"] or f'{p["role"]} in {p["region"]}, {p["era_range"]}.'
     return render_base(
         template,
-        title=f'{p["name"]} — {p["role"]} · Ten Lives Under Rome',
+        title=f'{p["name"]} — {p["role"]} · {SITE_TITLE}',
         desc=desc, rel=rel, body=body)
 
 
@@ -553,8 +556,8 @@ def render_credits(template, profiles, credits):
   <p style="text-align:center;margin-top:30px"><a class="backlink" href="{rel}index.html">&larr; Back to the dice</a></p>
 </article></main>
 """
-    return render_base(template, title="Sources & Credits · Ten Lives Under Rome",
-                       desc="Image attributions and further reading for Ten Lives Under Rome.",
+    return render_base(template, title=f"Sources & Credits · {SITE_TITLE}",
+                       desc=f"Image attributions and further reading for {SITE_TITLE}.",
                        rel=rel, body=body)
 
 
@@ -631,6 +634,7 @@ def main():
     (DOCS / "lives").mkdir(parents=True, exist_ok=True)
     (DOCS / "js").mkdir(parents=True, exist_ok=True)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
+    (DOCS / "CNAME").write_text(SITE_DOMAIN + "\n", encoding="utf-8")  # GitHub Pages custom domain
 
     # index
     (DOCS / "index.html").write_text(
