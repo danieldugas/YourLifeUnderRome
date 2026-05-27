@@ -181,11 +181,21 @@ figcaption .credit{display:block;font-size:12.5px;color:var(--ink-faint);margin-
 figcaption .credit a{color:var(--ink-faint);}
 
 .prose p{margin:0 0 17px;}
-.prose p:first-of-type::first-letter{
+.prose .para-block:first-of-type p::first-letter{
   font-family:var(--caps);float:left;font-size:74px;line-height:.7;
   margin:8px 12px 0 0;padding:8px 12px;color:#fff;font-weight:700;background:var(--rubric);box-shadow:0 0 0 3px var(--gold);
 }
 .prose strong{color:var(--rubric);font-weight:600;}
+
+/* per-paragraph image strip: a gallery-sized thumbnail above each paragraph */
+.para-block{margin:0 0 30px;}
+.para-block p{margin:0;}
+.para-fig{margin:0 auto 12px;max-width:340px;}
+.para-fig img{width:100%;height:210px;object-fit:cover;border:2px solid var(--frame);box-shadow:var(--shadow);}
+.para-fig figcaption{text-align:center;font-size:13.5px;margin-top:7px;}
+.para-fig .why{font-size:13.5px;}
+.para-fig .credit{font-size:11.5px;}
+.para-fig .ai-slot.para-slot{height:210px;margin:0;}
 
 /* gallery */
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px;margin:10px 0;}

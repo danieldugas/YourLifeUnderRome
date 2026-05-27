@@ -35,10 +35,18 @@ def collect():
     """Yield (group, key, commons_file, caption, why) for every commons image."""
     for img in M.DICE_IMAGES:
         yield ("dice", img["key"], img["file"], img.get("caption", ""), img.get("why", ""))
+    # Recurring thematic artifacts shared across lives (group "themes").
+    for key, img in getattr(M, "THEME_IMAGES", {}).items():
+        yield ("themes", key, img["file"], img.get("caption", ""), img.get("why", ""))
     for slug, meta in M.META.items():
         for img in meta.get("images", []):
             if img.get("kind") == "commons":
                 yield (slug, img["key"], img["file"], img.get("caption", ""), img.get("why", ""))
+        # New paragraph-specific Commons artifacts (group = slug); reuse/theme/local need no fetch.
+        for entry in meta.get("para", []):
+            if isinstance(entry, dict) and "commons" in entry:
+                c = entry["commons"]
+                yield (slug, c["key"], c["file"], c.get("caption", ""), c.get("why", ""))
 
 
 def strip_html(s):

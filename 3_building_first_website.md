@@ -105,8 +105,9 @@ custom domain, point DNS (GitHub apex `A` records + a `www` CNAME), enable HTTPS
 
 ## What's next
 
-- **Fill the AI illustration slots** — one daily-life scene per life; prompts are ready in
-  [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md). Generate, drop into `docs/images/<slug>/`, rebuild.
+- **Fill the daily-life illustration slots** — one scene per life; prompts are ready in
+  [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md). Commission or draw each one (image-gen only as a last
+  resort), drop the file into `docs/images/<slug>/` or `paragraph_images/`, rebuild.
 - Optionally widen the real-artifact galleries (the manifest in `profiles_meta.py` makes adding a
   Commons image a one-line entry + `fetch_images.py`).
 - Then it's launch-ready.

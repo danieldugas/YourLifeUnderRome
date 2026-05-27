@@ -10,8 +10,8 @@ Per-profile metadata that is NOT in the narrative draft:
 Keyed by the slug that build.py derives from the draft (slugify of the name).
 """
 
-# Shared style suffix for the AI daily-life illustration prompts, so generated
-# images read like period wall-painting and sit well beside real artifacts.
+# Shared style suffix for the daily-life illustration prompts, so the illustrations
+# read like period wall-painting and sit well beside real artifacts.
 AI_STYLE = (
     "Ancient Roman fresco / wall-painting style, matte plaster texture with fine "
     "cracks, warm earth-tone palette of ochre, Pompeian red and umber, naturalistic "
@@ -34,6 +34,61 @@ DICE_IMAGES = [
         "why": "Delos held the Mediterranean's largest slave market — the same throw of fortune that decided a life.",
     },
 ]
+
+# Recurring "thematic" museum artifacts, shared across lives and placed above
+# narrative paragraphs by theme (childhood, marriage, war, death, ...). Fetched
+# once into docs/images/themes/<key>.* by fetch_images.py. All verified on the
+# Wikimedia Commons API; licenses (PD / CC) are captured at fetch time.
+THEME_IMAGES = {
+    "childhood": {
+        "file": "File:Sarcophagus Marcus Cornelius Statius Louvre Ma659 n1.jpg",
+        "caption": "Sarcophagus of M. Cornelius Statius showing the stages of a Roman childhood, Louvre.",
+        "why": "Birth, nursing, first steps and first lessons — the shape of a Roman childhood."},
+    "children": {
+        "file": "File:Children games Louvre Ma99.jpg",
+        "caption": "Relief of children at play, Louvre.",
+        "why": "Roman children and the games of those who survived infancy."},
+    "marriage": {
+        "file": "File:Aldobrandini Wedding.jpg",
+        "caption": "The 'Aldobrandini Wedding', a Roman fresco of marriage preparations, Vatican.",
+        "why": "Betrothal and marriage — the hinge around which most Roman lives turned."},
+    "war": {
+        "file": "File:Sarcophagus Portonaccio Massimo.jpg",
+        "caption": "The Portonaccio battle sarcophagus, Romans and barbarians, Palazzo Massimo, Rome.",
+        "why": "War was never more than a generation away for anyone living under Rome."},
+    "marching": {
+        "file": "File:Trajan's Column - NMR - panel 015 A.jpg",
+        "caption": "Legionaries on campaign, relief cast from Trajan's Column, Rome.",
+        "why": "The army on the move — the machine that made and guarded the frontiers."},
+    "religion": {
+        "file": "File:Suovetaurile Louvre.jpg",
+        "caption": "A suovetaurilia (pig–sheep–bull) sacrifice relief, Louvre.",
+        "why": "Sacrifice and public ritual stood at the centre of Roman religion."},
+    "death": {
+        "file": "File:Rilievo con corteo funebre, 20 ac-20 dc ca., da amiternum, 07 portantina.jpg",
+        "caption": "A funeral procession bearing the deceased on a bier, relief from Amiternum.",
+        "why": "Death and the rites that carried a Roman to the grave."},
+    "writing": {
+        "file": "File:Pompei - Sappho - MAN.jpg",
+        "caption": "Fresco of a woman with stylus and wax tablets (the so-called 'Sappho'), Pompeii.",
+        "why": "Letters, accounts and literacy — reading and writing in the Roman world."},
+    "school": {
+        "file": "File:Roman school.jpg",
+        "caption": "A Roman schoolroom, relief from Neumagen.",
+        "why": "Schooling and the teaching of the young."},
+    "money": {
+        "file": "File:Gold aureus coins.jpg",
+        "caption": "Roman gold aurei.",
+        "why": "Coin, pay and prices — the cash economy that reached every life."},
+    "city": {
+        "file": "File:Forum Romanum panorama.jpg",
+        "caption": "The Roman Forum.",
+        "why": "The monumental, crowded heart of a Roman city."},
+    "agriculture": {
+        "file": "File:Cherchel-Mosaic-lower-register.png",
+        "caption": "Mosaic of ploughing and field labour, Cherchell (Caesarea), Roman Africa.",
+        "why": "The farming year that fed the empire and governed rural life."},
+}
 
 # Site-wide inspiration / general reading (rendered on the credits/about page).
 GENERAL_SOURCES = [
@@ -347,6 +402,149 @@ META = {
         ],
     },
 }
+
+# --------------------------------------------------------------------------
+# Per-paragraph image strip.
+#
+# One entry per narrative paragraph (in order), placed above that paragraph at
+# gallery-thumbnail size. Entry kinds, in priority order:
+#   {"local": "paragraph_images/<file>", "caption":..., "credit":...}  commissioned art (copied in)
+#   {"reuse": "<key>"}                       reuse one of this life's own `images` artifacts
+#   {"theme": "<key>"}                       a shared THEME_IMAGES artifact
+#   {"commons": {"key","file","caption","why"}}  a new paragraph-specific Commons artifact
+#   None                                     explicit placeholder
+# A missing/failed fetch also degrades to a placeholder at build time, so every
+# paragraph always has something above it. Trailing comments name the paragraph.
+# (List length must equal the life's narrative paragraph count; build.py warns otherwise.)
+PARA = {
+    "titus-caecilius": [
+        {"reuse": "farming"},      # 1. (intro) — the most common Roman life: subsistence farming
+        {"theme": "childhood"},    # 2. Childhood and family
+        {"theme": "war"},          # 3. Youth and the Social War
+        {"theme": "marriage"},     # 4. Marriage and adulthood
+        {"theme": "money"},        # 5. Sulla and the proscriptions — grain prices, markets
+        {"theme": "marching"},     # 6. Middle years and Caesar's civil war — armies through Italy
+        {"theme": "death"},        # 7. Death
+    ],
+    "kalasiris": [
+        {"theme": "agriculture"},  # 1. (intro) — a Sicilian grain estate
+        {"reuse": "captive"},      # 2. Enslavement and transport
+        {"reuse": "estate"},       # 3. Work — the great estate and its labourers
+        {"theme": "war"},          # 4. The context of slave revolts (servile wars)
+        {"theme": "marriage"},     # 5. Personal life — an informal union
+        {"theme": "death"},        # 6. Death
+    ],
+    "helene": [
+        {"theme": "writing"},      # 1. (intro) — her tax receipts and papyri survive
+        {"theme": "childhood"},    # 2. Family and childhood
+        {"theme": "marriage"},     # 3. Marriage
+        {"theme": "children"},     # 4. Children and mortality
+        {"theme": "death"},        # 5. The Antonine Plague
+        {"theme": "agriculture"},  # 6. Daily life — canal, fields, village
+        {"reuse": "sobek"},        # 7. Later years — her god Sobek
+        {"commons": {"key": "fayum2",
+                     "file": "File:Fayum mummy portrait (c. 200) - British museum, EA63396.jpg",
+                     "caption": "Fayum mummy portrait of a man, c. 200 AD, British Museum.",
+                     "why": "Mummy portraits were funerary — painted to accompany the dead like Helene."}},  # 8. Death
+    ],
+    "petronia-iusta": [
+        {"theme": "city"},         # 1. (intro) — born in the Subura of Rome
+        {"theme": "childhood"},    # 2. Childhood
+        {"reuse": "lamp"},         # 3. Education and skills — she painted lamps
+        {"commons": {"key": "fire",
+                     "file": "File:Hubert Robert - The Fire of Rome - Google Art Project.jpg",
+                     "caption": "Hubert Robert, 'The Fire of Rome' (18th c.), the burning city.",
+                     "why": "The Great Fire of 64 AD tore through the crowded insulae she lived among."}},  # 4. The Great Fire
+        {"theme": "marriage"},     # 5. Marriage and work
+        {"theme": "children"},     # 6. Children
+        {"theme": "war"},          # 7. The Year of Four Emperors — civil war
+        {"reuse": "latrine"},      # 8. Daily life in the Flavian–Trajanic era
+        {"theme": "death"},        # 9. Death
+    ],
+    "gaius-vibius-celer": [
+        {"theme": "marching"},        # 1. (intro) — twenty-five years under the eagles
+        {"reuse": "diploma"},         # 2. Enlistment — the army and citizenship
+        {"theme": "war"},             # 3. Training and garrison life
+        {"reuse": "caelius"},         # 4. The Teutoburg Forest — cenotaph of Caelius
+        {"reuse": "kalkriese-mask"},  # 5. (aftermath) — a mask from the battlefield
+        {"theme": "death"},           # 6. Germanicus's campaigns — burying the Teutoburg dead
+        {"theme": "marriage"},        # 7. Personal life
+        {"reuse": "diploma"},         # 8. Discharge and death — the discharge diploma
+    ],
+    "publius-valerius-messalla": [
+        {"theme": "money"},        # 1. (intro) — top of the pyramid, vast wealth
+        {"theme": "writing"},      # 2. Family and education
+        {"reuse": "arapacis"},     # 3. Career — the cursus honorum (senatorial procession)
+        {"theme": "city"},         # 4. The Augustan twilight and Tiberius
+        {"theme": "money"},        # 5. Wealth and estates
+        {"local": "paragraph_images/publius_family_portrait.png",
+         "caption": "Publius Valerius Messalla with his wife and children — a commissioned portrait.",
+         "credit": "Commissioned illustration"},  # 6. Marriage and family
+        {"theme": "religion"},     # 7. The consulship and Claudius — consular sacrifices
+        {"theme": "death"},        # 8. Death
+    ],
+    "successus": [
+        {"reuse": "tavern"},       # 1. (intro) — the food, drink and dice of his counter
+        {"theme": "city"},         # 2. Pompeii
+        {"theme": "marriage"},     # 3. Personal life and social world
+        {"commons": {"key": "earthquake",
+                     "file": "File:Pompeian bas-relief, depicting the tilting buildings in the Forum of Pompeii during the AD 62 earthquake, AD 62-79, Exhibition “Pompeii And Santorini. Eternity In A Day” at the Scuderie Del Quirinale, Rome (49904946677).jpg",
+                     "caption": "Pompeian relief of buildings toppling in the AD 62 earthquake.",
+                     "why": "The 62 AD earthquake wrecked Pompeii seventeen years before Vesuvius finished it."}},  # 4. The earthquake of 62 AD
+        {"commons": {"key": "graffiti",
+                     "file": "File:Inscriptions found in Pompeii from VI XIV 37, 39, 40 by Geremia Discanno pub 1882.jpg",
+                     "caption": "Painted notices and graffiti from a Pompeii street wall (1882 record).",
+                     "why": "Pompeii's walls carried election notices, prices and graffiti like his."}},  # 5. Graffiti
+        {"reuse": "cast"},         # 6. August 24, 79 AD — the eruption
+        {"theme": "death"},        # 7. (closing)
+    ],
+    "boudiga": [
+        {"theme": "agriculture"},  # 1. (intro) — the Severn valley before the legions
+        {"theme": "childhood"},    # 2. Pre-conquest childhood
+        {"theme": "war"},          # 3. The Claudian invasion
+        {"reuse": "mosaic"},       # 4. Cultural transformation — the Roman town of Corinium
+        {"theme": "marriage"},     # 5. Marriage and family
+        {"commons": {"key": "boudica",
+                     "file": "File:Boudicca Statue Westminster Bridge, London (7269568012).jpg",
+                     "caption": "Thornycroft's 'Boadicea and Her Daughters', Westminster, London.",
+                     "why": "The revolt of Boudica (60–61 AD) that nearly ended Roman Britain."}},  # 6. The Boudican revolt
+        {"theme": "city"},         # 7. The long peace — Roman towns flourish
+        {"reuse": "gorgon"},       # 8. Religion — the temple of Sulis Minerva at Bath
+        {"theme": "death"},        # 9. Death
+    ],
+    "aurelius-diza": [
+        {"theme": "marching"},     # 1. (intro) — a trooper on the Danube frontier
+        {"theme": "war"},          # 2. The Crisis of the Third Century
+        {"reuse": "mithras"},      # 3. Military life on the Danube — the soldiers' cult of Mithras
+        {"commons": {"key": "ludovisi",
+                     "file": "File:Grande Ludovisi sarcophagus.jpg",
+                     "caption": "The Great Ludovisi sarcophagus, Romans fighting Goths, Palazzo Altemps, Rome.",
+                     "why": "The Gothic wars that ravaged the Danube provinces in Diza's lifetime."}},  # 4. Gothic invasions
+        {"reuse": "coin"},         # 5. Economic collapse — the debased antoninianus
+        {"theme": "marriage"},     # 6. Personal life
+        {"theme": "money"},        # 7. The Palmyrene secession and Gallienus
+        {"reuse": "tombstone"},    # 8. Death — auxiliary tombstones fill the Intercisa cemetery
+    ],
+    "flavius-marcellinus": [
+        {"theme": "city"},         # 1. (intro) — a clerk in the new capital, Constantinople
+        {"theme": "childhood"},    # 2. Childhood
+        {"theme": "school"},       # 3. Education
+        {"reuse": "walls"},        # 4. Constantinople — the Theodosian walls
+        {"theme": "war"},          # 5. The Battle of Adrianople
+        {"reuse": "notitia"},      # 6. The fall of Rome and the divided empire (the Notitia lists both halves)
+        {"theme": "marriage"},     # 7. Marriage and domestic life
+        {"commons": {"key": "christian",
+                     "file": "File:Sarcophagus of Junius Bassus.jpg",
+                     "caption": "The Sarcophagus of Junius Bassus (359 AD), an early-Christian masterpiece, Rome.",
+                     "why": "Christianity now framed every Roman life — and death — as it did Marcellinus's."}},  # 8. Religion and controversy
+        {"theme": "death"},        # 9. Death
+    ],
+}
+
+# Attach each para list onto its profile so build.py / fetch_images.py see it.
+for _slug, _para in PARA.items():
+    META[_slug]["para"] = _para
+
 
 # The 906–1000 band: lives this set does not profile.
 UNREPRESENTED = {

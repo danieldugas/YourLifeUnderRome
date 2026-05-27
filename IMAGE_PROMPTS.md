@@ -1,6 +1,6 @@
 # Image prompts — daily-life illustrations
 
-Each profile has one *generated illustration* slot for a daily-life scene that no single museum artifact captures. Generate an image from the prompt, save it to the shown path, then add a `commons`-style entry (or just reference the file) so the build drops it in. The shared style suffix keeps them consistent.
+Each profile has one *illustration* slot for a daily-life scene that no single museum artifact captures. Commission or draw it (and only as a last resort generate one) from the prompt below, save it to the shown path, then add a `commons`-style entry (or just reference the file) so the build drops it in. The shared style suffix keeps them consistent.
 
 _(All other images on the site are real museum artifacts — see the credits page.)_
 

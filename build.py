@@ -15,6 +15,7 @@ Usage:
 import html
 import json
 import re
+import shutil
 import sys
 import unicodedata
 from pathlib import Path
@@ -25,6 +26,7 @@ ROOT = Path(__file__).resolve().parent
 DRAFT = ROOT / "1_first_draft_roman_lives.md"
 DOCS = ROOT / "docs"
 TEMPLATES = ROOT / "templates"
+PARA_IMG_SRC = ROOT / "paragraph_images"  # owner's drop folder for commissioned illustrations
 
 SITE_TITLE = "Your Life Under Rome"
 SITE_DOMAIN = "YourLifeUnderRome.com"
@@ -265,11 +267,77 @@ def fig_ai(img):
     prompt = img.get("prompt", "")
     cap = img.get("caption", "")
     alt = img.get("alt", cap)
-    return (f'<!-- AI illustration prompt: {prompt} -->\n'
+    return (f'<!-- Illustration prompt: {prompt} -->\n'
             f'<figure><div class="ai-slot" role="img" aria-label="{esc(alt)}">'
-            f'{QUILL_SVG}<span class="tag">Illustration to be generated</span></div>'
-            f'<figcaption>{esc(cap)}<span class="why">Daily-life scene — a generated '
-            f'image will live here.</span></figcaption></figure>')
+            f'{QUILL_SVG}<span class="tag">Illustration to come</span></div>'
+            f'<figcaption>{esc(cap)}<span class="why">Daily-life scene — a painted '
+            f'illustration will live here.</span></figcaption></figure>')
+
+
+def fig_para(rel, rec):
+    """A per-paragraph thumbnail (gallery-sized) sitting above a narrative paragraph.
+
+    rec is either a Commons credit record (from image_credits.json) or a local
+    commissioned-illustration record (with is_local / credit_text)."""
+    src = rel + rec["local"]
+    cap = rec.get("caption", "")
+    why = rec.get("why", "")
+    whyhtml = f'<span class="why">{esc(why)}</span>' if why else ""
+    if rec.get("is_local"):
+        credit = (f'<span class="credit">{esc(rec.get("credit_text", "Commissioned illustration"))}'
+                  f'</span>')
+    else:
+        credit = credit_line(rel, rec)
+    return (f'<figure class="para-fig"><img src="{esc(src)}" alt="{esc(cap)}" loading="lazy">'
+            f'<figcaption>{esc(cap)}{whyhtml}{credit}</figcaption></figure>')
+
+
+def para_placeholder(label="Illustration to come"):
+    """A gallery-sized placeholder above a paragraph when no image fits yet."""
+    return (f'<figure class="para-fig"><div class="ai-slot para-slot" role="img" '
+            f'aria-label="{esc(label)}">{QUILL_SVG}'
+            f'<span class="tag">Illustration to come</span></div></figure>')
+
+
+def copy_local(slug, entry):
+    """Copy a commissioned illustration from paragraph_images/ into docs/images/<slug>/.
+
+    Returns a credit-like record, or None if the source file is missing."""
+    src = ROOT / entry["local"]
+    if not src.exists():
+        return None
+    ext = src.suffix.lower() or ".png"
+    key = "para-" + slugify(src.stem)
+    rel_local = f"images/{slug}/{key}{ext}"
+    dest = DOCS / rel_local
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(src, dest)
+    return {
+        "local": rel_local,
+        "caption": entry.get("caption", ""),
+        "why": entry.get("why", ""),
+        "credit_text": entry.get("credit", "Commissioned illustration"),
+        "is_local": True,
+    }
+
+
+def resolve_para_image(rel, p, entry, credits, local_credits):
+    """Map one `para` entry to its rendered figure, falling back to a placeholder."""
+    if not entry:
+        return para_placeholder()
+    if "local" in entry:
+        rec = local_credits.get((p["slug"], entry["local"]))
+        return fig_para(rel, rec) if rec else para_placeholder()
+    if "reuse" in entry:
+        rec = credits.get(f'{p["slug"]}/{entry["reuse"]}')
+        return fig_para(rel, rec) if rec else para_placeholder()
+    if "theme" in entry:
+        rec = credits.get(f'themes/{entry["theme"]}')
+        return fig_para(rel, rec) if rec else para_placeholder()
+    if "commons" in entry:
+        rec = credits.get(f'{p["slug"]}/{entry["commons"]["key"]}')
+        return fig_para(rel, rec) if rec else para_placeholder()
+    return para_placeholder()
 
 
 def band_bar(roll_min, weight, color_cls):
@@ -291,6 +359,7 @@ def merge(profiles):
         p["tags"] = meta.get("tags", [])
         p["epitome"] = meta.get("epitome", "")
         p["images"] = meta.get("images", [])
+        p["para"] = meta.get("para", [])
         p["sources"] = meta.get("sources", [])
         p["color"] = f"c{p['number']}"
         p["url"] = f"lives/{p['slug']}.html"
@@ -402,10 +471,20 @@ def render_index(template, intro, profiles, credits):
 
 # ---- profile page --------------------------------------------------------
 
-def render_profile(template, p, prev_p, next_p, credits):
+def render_profile(template, p, prev_p, next_p, credits, local_credits):
     rel = "../"
     commons = [i for i in p["images"] if i.get("kind") == "commons"]
     ais = [i for i in p["images"] if i.get("kind") == "ai"]
+
+    # Per-paragraph image strip: one thumbnail (or placeholder) above each paragraph.
+    prose_blocks = []
+    para_meta = p["para"]
+    for i, para in enumerate(p["narrative_paras"]):
+        entry = para_meta[i] if i < len(para_meta) else None
+        img_html = resolve_para_image(rel, p, entry, credits, local_credits)
+        ptext = md_inline(para.replace("\n", " "))
+        prose_blocks.append(f'<div class="para-block">{img_html}<p>{ptext}</p></div>')
+    prose_html = "\n".join(prose_blocks)
 
     # hero = first commons image (fall back to first ai)
     hero_html = ""
@@ -468,7 +547,7 @@ def render_profile(template, p, prev_p, next_p, credits):
   {hero_html}
 
   <div class="rubric">The Life</div>
-  <div class="prose">{p["narrative_html"]}</div>
+  <div class="prose">{prose_html}</div>
 
   {gallery_html}
 
@@ -480,8 +559,8 @@ def render_profile(template, p, prev_p, next_p, credits):
   <div class="rubric">Sources &amp; Further Reading</div>
   <div class="sources"><ul>{sources}</ul>
     <p style="font-style:italic;color:var(--ink-soft);font-size:15px">
-      Every image above is a real museum artifact or photograph; full attribution on the
-      <a href="{rel}credits.html">credits page</a>.</p>
+      The images above are real museum artifacts and photographs, or commissioned illustrations;
+      full attribution on the <a href="{rel}credits.html">credits page</a>.</p>
   </div>
 
   {pager}
@@ -498,10 +577,11 @@ def render_profile(template, p, prev_p, next_p, credits):
 
 # ---- credits page --------------------------------------------------------
 
-def render_credits(template, profiles, credits):
+def render_credits(template, profiles, credits, local_list):
     rel = ""
     slug_to_name = {p["slug"]: p["name"] for p in profiles}
     slug_to_name["dice"] = "Site (dice)"
+    slug_to_name["themes"] = "Recurring scenes"
 
     rows = []
     for ref, rec in credits.items():
@@ -519,6 +599,14 @@ def render_credits(template, profiles, credits):
             f'<tr><td>{thumb}</td><td>{esc(title)}</td><td>{esc(who)}</td>'
             f'<td>{esc(artist)}</td><td>{lic_html}</td>'
             f'<td><a href="{esc(src)}" target="_blank" rel="noopener">Commons</a></td></tr>')
+
+    # Commissioned / hand-picked illustrations (not from Commons).
+    for who, rec in local_list:
+        thumb = f'<img src="{rel}{rec["local"]}" alt="" loading="lazy">'
+        rows.append(
+            f'<tr><td>{thumb}</td><td>{esc(rec.get("caption", ""))}</td><td>{esc(who)}</td>'
+            f'<td>{esc(rec.get("credit_text", "Commissioned illustration"))}</td>'
+            f'<td>Commissioned</td><td>&mdash;</td></tr>')
 
     general = "".join(
         f'<li><span><a href="{esc(s["url"])}" target="_blank" rel="noopener">{esc(s["title"])}</a>'
@@ -539,9 +627,10 @@ def render_credits(template, profiles, credits):
     mortality rates, prices, distances and events are drawn from the historical evidence; the
     person is not.</p>
     <p>The illustrations are, wherever possible, <strong>real artifacts and museum photographs</strong>
-    from Wikimedia Commons, each chosen because it connects directly to the life it accompanies.
-    They remain under the licenses of their creators, credited below. Scenes marked
-    &ldquo;illustration to be generated&rdquo; are slots for period-style illustrations still to be made.</p>
+    from Wikimedia Commons, each chosen because it connects directly to the life it accompanies, plus a
+    few <strong>commissioned illustrations</strong>. They remain under the licenses of their creators,
+    credited below. Scenes marked &ldquo;illustration to come&rdquo; are slots for period-style
+    illustrations still to be painted.</p>
   </div>
 
   <div class="rubric">General Reading &amp; Inspiration</div>
@@ -579,14 +668,14 @@ def write_lives_index(profiles):
 
 
 def write_image_prompts(profiles):
-    """Emit IMAGE_PROMPTS.md: ready-to-use prompts for the AI daily-life slots."""
+    """Emit IMAGE_PROMPTS.md: ready-to-use prompts for the daily-life illustration slots."""
     lines = [
         "# Image prompts — daily-life illustrations",
         "",
-        "Each profile has one *generated illustration* slot for a daily-life scene that no "
-        "single museum artifact captures. Generate an image from the prompt, save it to the "
-        "shown path, then add a `commons`-style entry (or just reference the file) so the "
-        "build drops it in. The shared style suffix keeps them consistent.",
+        "Each profile has one *illustration* slot for a daily-life scene that no single museum "
+        "artifact captures. Commission or draw it (and only as a last resort generate one) from the "
+        "prompt below, save it to the shown path, then add a `commons`-style entry (or just "
+        "reference the file) so the build drops it in. The shared style suffix keeps them consistent.",
         "",
         "_(All other images on the site are real museum artifacts — see the credits page.)_",
         "",
@@ -636,6 +725,20 @@ def main():
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     (DOCS / "CNAME").write_text(SITE_DOMAIN + "\n", encoding="utf-8")  # GitHub Pages custom domain
 
+    # Copy commissioned per-paragraph illustrations from paragraph_images/ into docs/.
+    local_credits = {}   # (slug, source_path) -> record, used by resolve_para_image
+    local_list = []      # [(life_name, record)] for the credits table
+    for p in profiles:
+        for entry in p["para"]:
+            if isinstance(entry, dict) and "local" in entry:
+                rec = copy_local(p["slug"], entry)
+                if rec:
+                    local_credits[(p["slug"], entry["local"])] = rec
+                    local_list.append((p["name"], rec))
+                else:
+                    print(f"  WARNING: missing local illustration {entry['local']} "
+                          f"({p['slug']}) — paragraph will show a placeholder")
+
     # index
     (DOCS / "index.html").write_text(
         render_index(base, intro, profiles, credits), encoding="utf-8")
@@ -643,15 +746,18 @@ def main():
     # profiles (X = total count, patched into the caput line)
     total = len(profiles)
     for i, p in enumerate(profiles):
+        if p["para"] and len(p["para"]) != len(p["narrative_paras"]):
+            print(f"  WARNING: {p['slug']} has {len(p['para'])} para entries but "
+                  f"{len(p['narrative_paras'])} paragraphs — strip will misalign")
         prev_p = profiles[i - 1] if i > 0 else None
         next_p = profiles[i + 1] if i < total - 1 else None
-        page = render_profile(base, p, prev_p, next_p, credits)
+        page = render_profile(base, p, prev_p, next_p, credits, local_credits)
         page = page.replace("of X</div>", f"of {roman(total)}</div>")
         (DOCS / "lives" / f'{p["slug"]}.html').write_text(page, encoding="utf-8")
 
     # credits
     (DOCS / "credits.html").write_text(
-        render_credits(base, profiles, credits), encoding="utf-8")
+        render_credits(base, profiles, credits, local_list), encoding="utf-8")
 
     write_lives_index(profiles)
     write_image_prompts(profiles)
@@ -660,8 +766,21 @@ def main():
     missing = [f'{p["slug"]}/{i["key"]}'
                for p in profiles for i in p["images"]
                if i.get("kind") == "commons" and f'{p["slug"]}/{i["key"]}' not in credits]
+    # Paragraph-strip commons/theme images that didn't fetch (these fall back to placeholders).
+    para_missing = []
+    for p in profiles:
+        for entry in p["para"]:
+            if not isinstance(entry, dict):
+                continue
+            if "commons" in entry and f'{p["slug"]}/{entry["commons"]["key"]}' not in credits:
+                para_missing.append(f'{p["slug"]}/{entry["commons"]["key"]}')
+            elif "theme" in entry and f'themes/{entry["theme"]}' not in credits:
+                para_missing.append(f'themes/{entry["theme"]}')
     if missing:
         print("  WARNING: missing image credits (run fetch_images.py):", missing)
+    if para_missing:
+        print("  NOTE: paragraph images not yet fetched (showing placeholders):",
+              sorted(set(para_missing)))
 
 
 if __name__ == "__main__":

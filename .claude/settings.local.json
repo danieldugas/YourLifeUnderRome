@@ -19,7 +19,10 @@
       "Bash(curl -s -A \"Mozilla/5.0\" \"http://web.archive.org/cdx/search/cdx?url=acoup.blog*&matchType=domain&filter=original:.*\\(bread|farmer\\).*&output=text&fl=original&collapse=urlkey&limit=40\")",
       "Bash(python3 build.py)",
       "Bash(sed 's|docs/|  |')",
-      "Bash(python3 -)"
+      "Bash(python3 -)",
+      "Bash(timeout 15 python3 -c \"import urllib.request; req=urllib.request.Request\\('https://commons.wikimedia.org/w/api.php?action=query&format=json&meta=siteinfo', headers={'User-Agent':'test'}\\); print\\('NET OK', urllib.request.urlopen\\(req, timeout=10\\).status\\)\")",
+      "Bash(google-chrome-stable --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=820,5600 --screenshot=/tmp/ylur_shots/titus_full.png file://__TRACKED_VAR__/docs/lives/titus-caecilius.html)",
+      "Bash(python3 -c \"from PIL import Image; Image.open\\('/tmp/ylur_shots/titus_full.png'\\).crop\\(\\(0,1900,820,3100\\)\\).save\\('/tmp/ylur_shots/titus_life.png'\\)\")"
     ]
   }
 }
