@@ -81,6 +81,18 @@ python3 -m http.server -d docs 8000
   profile in `profiles_meta.py`, run `fetch_images.py` then `build.py`.
 - **Fill a daily-life illustration slot** → commission or draw an illustration from the matching
   prompt in `IMAGE_PROMPTS.md` (image-gen only as a last resort), save it to the path shown, wire it in.
+- **Add an inline source link** → in the prose, wrap a phrase as `[anchor text](https://…)`. These
+  render as *hidden* reference links (same ink as the body text, a faint underline only on hover;
+  styled via `a.ref` in `css/style.css`). Prefer Wikipedia/ACOUP, and a `#Section` anchor when one
+  points at the exact passage (e.g. `Mithraism#Membership`). After editing, run
+  `python3 check_links.py` — it verifies every inline link resolves (HTTP 200) and that any
+  `#anchor` actually exists on the page, and exits non-zero if not.
+  - **What to link:** prioritize *authoritative statements about Rome that beg for citation*, and
+    wrap the **whole claim**, not a noun inside it (e.g. link all of "Oil lamps were a major
+    industry in Rome", not just "oil lamps"). Linking place/proper names (Porticus Aemilia) is fine
+    but secondary. **Don't** link general single words (Latin, literacy, frescoes) or believable but
+    arbitrary details of one life ("Your dowry was negligible") unless the source is exceptionally
+    specific.
 
 ## Sources & licensing
 

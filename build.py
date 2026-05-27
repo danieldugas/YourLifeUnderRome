@@ -63,12 +63,23 @@ def split_paragraphs(text):
     return [p.strip() for p in parts if p.strip()]
 
 
+# Inline reference links: [anchor text](url). The URL may itself contain one
+# level of balanced parentheses, as Wikipedia disambiguation titles do
+# (…/Social_War_(91%E2%80%9388_BC)); the final ")" then closes the markdown.
+LINK_RE = re.compile(r"\[([^\]]+?)\]\(((?:[^()\s]|\([^()]*\))+)\)")
+
+
 def md_inline(text):
     """Escape HTML, then render the small inline markdown subset we use."""
     text = html.escape(text, quote=False)
     # bold then italic (bold uses **, italic uses single * not part of **)
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)", r"<em>\1</em>", text)
+    # hidden reference links — styled to read as plain text (see .prose a.ref).
+    # html.escape has already turned any "&" in the URL into "&amp;", which is
+    # exactly what an href wants, so the captured URL drops straight in.
+    text = LINK_RE.sub(
+        r'<a class="ref" href="\2" target="_blank" rel="noopener">\1</a>', text)
     return text
 
 

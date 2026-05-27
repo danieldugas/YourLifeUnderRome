@@ -41,6 +41,9 @@ body{
 }
 a{color:var(--rubric);text-decoration-color:rgba(156,44,29,.35);text-underline-offset:3px;}
 a:hover{color:var(--rubric-br);text-decoration-color:currentColor;}
+/* hidden reference links: read as plain body text, the underline surfaces only on hover/focus */
+a.ref{color:inherit;text-decoration:none;cursor:pointer;}
+a.ref:hover,a.ref:focus-visible{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:rgba(156,44,29,.55);text-underline-offset:3px;}
 img{max-width:100%;display:block;}
 
 /* ---------------------------------------------------------------- header */

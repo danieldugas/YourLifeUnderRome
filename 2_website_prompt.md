@@ -13,7 +13,14 @@ Some thoughts:
 - It would be cool to have a nice illustration of bone dice, or even a 3d render
 - It would be really good if we could link to as many sources as possible, inspired from example by Brett Devereaux's ancient rome series and the texts they link to
 - It would be great if pictures of ancient objects could be contrasted with colourful illustrations of daily life, where the ancient object is restored and put into context
-<<<<<<< Updated upstream
-=======
 - Could link to Roman Legion marching citations in the legionnaire page
->>>>>>> Stashed changes
+- Add links to interesting reads for as many sentences as possible (links should be hidden, i.e. urls should have same font as normal text but still have the clickable cursor)
+Especially authoritative statements about Rome:
+For example, the sentence about Mithras being popular in the military could link to a passage where this is discussed (in a blog, wikipedia, or other fun to read but historically serious source)
+Other examples:
+"Oil lamps were a major industry in Rome" - link to a source that backs the explicit claim
+"Nero's rebuilding regulations mandated wider streets and fireproof materials for new construction" - link to a source
+"over 130 days of public games per year by the second century" - link to a source
+You can also add links for the name of places, like "Porticus Aemilia"
+Do not link single words that are general, like "Literacy", "Latin", "smallpox", "porridge", "linen", "midwife". You can however link single words that are not common anymore, such as "amphorae", "frescoes", "dolia", "Brittonic", "Aramaic". 
+Do not link sentences that are believable arbitrary decisions about this specific life, such as "Your dowry was negligible", unless you have an exceptionally specific or relevant source.

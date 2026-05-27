@@ -388,24 +388,24 @@ SECRET = {
         "person, and you existed. The dice were never supposed to land here — you are "
         "the throw that comes up once in a million, the exception that proves how "
         "crushingly ordinary almost every Roman life really was. You are Cleopatra VII "
-        "Philopator, last ruler of the Ptolemaic dynasty, last Pharaoh of Egypt.",
+        "Philopator, last ruler of the [Ptolemaic dynasty](https://en.wikipedia.org/wiki/Ptolemaic_dynasty), last [Pharaoh](https://en.wikipedia.org/wiki/Pharaoh) of Egypt.",
 
         "**The house you were born into.** You are Macedonian Greek, not Egyptian by "
-        "blood — your line descends from Ptolemy I Soter, one of Alexander the Great's "
-        "generals, who took Egypt when Alexander's empire was carved up after 323 BC. "
-        "For nearly three hundred years your family has ruled from Alexandria, the "
-        "greatest city of the age: the Lighthouse on Pharos, the Library and the "
-        "Museum, a harbour that feeds Rome its grain. The Ptolemies are also a "
+        "blood — your line descends from [Ptolemy I Soter](https://en.wikipedia.org/wiki/Ptolemy_I_Soter), one of [Alexander the Great](https://en.wikipedia.org/wiki/Alexander_the_Great)'s"
+        "generals, who took Egypt when Alexander's empire was [carved up after 323 BC](https://en.wikipedia.org/wiki/Wars_of_the_Diadochi)."
+        "For nearly three hundred years your family has ruled from [Alexandria](https://en.wikipedia.org/wiki/Alexandria), the"
+        "greatest city of the age: the [Lighthouse on Pharos](https://en.wikipedia.org/wiki/Lighthouse_of_Alexandria), the [Library](https://en.wikipedia.org/wiki/Library_of_Alexandria) and the"
+        "Museum, a [harbour that feeds Rome its grain](https://en.wikipedia.org/wiki/Cura_Annonae#Grain_from_Egypt). The Ptolemies are also a"
         "byword for murder. Siblings marry siblings and then kill them; your own "
         "history is a ledger of poisonings and exiles. You will play that game better "
         "than any of them.",
 
         "**A childhood among Romans and creditors.** You are born around 69 BC, a "
-        "daughter of Ptolemy XII — nicknamed Auletes, the flute-player — a king who "
+        "daughter of [Ptolemy XII](https://en.wikipedia.org/wiki/Ptolemy_XII_Auletes) — nicknamed Auletes, the flute-player — a king who "
         "keeps his throne only by borrowing staggering sums from Roman financiers and "
         "buying the favour of Roman senators. You grow up watching Egypt's independence "
-        "leak away to Rome one loan at a time. You are formidably educated. Plutarch "
-        "says you are the first of your entire dynasty to bother learning Egyptian, and "
+        "leak away to Rome one loan at a time. You are formidably educated. [Plutarch](https://en.wikipedia.org/wiki/Plutarch)"
+        "says you are [the first of your entire dynasty to bother learning Egyptian](https://en.wikipedia.org/wiki/Egyptian_language), and"
         "that your voice was an instrument you could turn to many languages — Greek, "
         "Egyptian, and the tongues of Ethiopians, Hebrews, Arabs, Syrians, Medes and "
         "Parthians, with rarely a need for an interpreter.",
@@ -413,33 +413,33 @@ SECRET = {
         "**Caesar.** Your father dies in 51 BC and leaves the throne to you, about "
         "eighteen, jointly with your younger brother-husband Ptolemy XIII, about ten. "
         "It is no partnership; his courtiers drive you out. Then Rome's own civil war "
-        "spills onto your shore: Pompey the Great, fleeing Julius Caesar, is murdered "
+        "spills onto your shore: [Pompey the Great](https://en.wikipedia.org/wiki/Pompey), fleeing [Julius Caesar](https://en.wikipedia.org/wiki/Julius_Caesar), is murdered"
         "on the Egyptian beach as he steps from the boat. Caesar arrives in pursuit and "
         "you have yourself smuggled to him through the palace — the story says rolled "
         "inside a bedsack. You win him. Ptolemy XIII drowns in the Nile during the war "
-        "that follows; you bear Caesar a son, Caesarion, in 47 BC; and you spend his "
-        "last years partly in Rome as his guest, until the daggers of the Ides of March, "
+        "that follows; you bear Caesar a son, [Caesarion](https://en.wikipedia.org/wiki/Caesarion), in 47 BC; and you spend his "
+        "last years partly in Rome as his guest, until the daggers of the [Ides of March](https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar),"
         "44 BC, send you home.",
 
-        "**Antony.** With Caesar dead, Rome is fought over by his heir Octavian and his "
-        "lieutenant Mark Antony. In 41 BC Antony summons you to Tarsus and you arrive on "
+        "**Antony.** With Caesar dead, Rome is fought over by his heir [Octavian](https://en.wikipedia.org/wiki/Augustus) and his"
+        "lieutenant [Mark Antony](https://en.wikipedia.org/wiki/Mark_Antony). In 41 BC Antony summons you to [Tarsus](https://en.wikipedia.org/wiki/Tarsus,_Mersin) and you arrive on"
         "a barge with gilded stern and purple sails, rowed to the sound of flutes — a "
         "piece of theatre Plutarch could not stop describing. For a decade you and "
         "Antony are allies and lovers against Octavian. You have three children with "
-        "him: the twins Alexander Helios and Cleopatra Selene, and Ptolemy Philadelphus. "
-        "At the Donations of Alexandria in 34 BC, Antony parcels out Rome's eastern "
+        "him: the twins [Alexander Helios](https://en.wikipedia.org/wiki/Alexander_Helios) and [Cleopatra Selene](https://en.wikipedia.org/wiki/Cleopatra_Selene_II), and [Ptolemy Philadelphus](https://en.wikipedia.org/wiki/Ptolemy_Philadelphus_(son_of_Cleopatra))."
+        "At the [Donations of Alexandria](https://en.wikipedia.org/wiki/Donations_of_Alexandria) in 34 BC, Antony parcels out Rome's eastern"
         "provinces to your children as kings and queens — a gift that hands Octavian the "
         "propaganda he needs: a Roman general giving away the Republic to a foreign queen.",
 
         "**The end.** It comes apart at sea. In 31 BC your combined fleet is broken at "
-        "Actium off the coast of Greece, and you and Antony flee back to Egypt. The "
+        "[Actium](https://en.wikipedia.org/wiki/Battle_of_Actium) off the coast of Greece, and you and Antony flee back to Egypt. The "
         "following summer Octavian's army reaches Alexandria. Antony, told falsely that "
         "you are already dead, falls on his sword. You are captured, and rather than be "
         "led through Rome in Octavian's triumph you take your own life — by tradition "
-        "the bite of an asp, the Egyptian cobra, though poison is just as likely. You "
+        "the bite of an asp, the [Egyptian cobra](https://en.wikipedia.org/wiki/Egyptian_cobra), though poison is just as likely. You "
         "die in August of 30 BC, thirty-nine years old. Caesarion, Caesar's son and "
         "your co-ruler, is hunted down and killed; \"two Caesars are too many.\" Egypt "
-        "becomes a Roman province, its grain and gold the foundation of the empire "
+        "becomes a [Roman province](https://en.wikipedia.org/wiki/Egypt_(Roman_province)), its grain and gold the foundation of the empire"
         "Octavian will rule as Augustus.",
 
         "**How you were remembered.** The victors wrote you down. To Augustus's poets "
@@ -447,8 +447,8 @@ SECRET = {
         "Republic was saved from — and that portrait, not the able administrator, naval "
         "commander and polyglot diplomat who nearly bent Rome's civil wars to Egypt's "
         "advantage, is mostly what survived. Only one of your children outlived the "
-        "conquest in freedom: Cleopatra Selene, married off to King Juba II of "
-        "Mauretania, who named her own son Ptolemy and kept your dynasty's memory "
+        "conquest in freedom: Cleopatra Selene, married off to [King Juba II](https://en.wikipedia.org/wiki/Juba_II) of"
+        "[Mauretania](https://en.wikipedia.org/wiki/Mauretania), who named her own son Ptolemy and kept your dynasty's memory"
         "alive at the far western edge of the Roman world. The dice will almost "
         "certainly never bring anyone here again.",
     ],
