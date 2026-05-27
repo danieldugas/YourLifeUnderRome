@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style 4 — Parchment / Manuscript · Ten Lives Under Rome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vellum:#e9dcbe;
+    --vellum-dk:#dccba3;
+    --ink:#3a2c1a;
+    --ink-soft:#6a573b;
+    --rubric:#9c2c1d;       /* red lead / minium */
+    --rubric-br:#bb3a26;
+    --gold:#b08a2c;         /* gold leaf */
+    --frame:#a78a55;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"IM Fell English",Georgia,serif;
+    font-size:21px;line-height:1.62;color:var(--ink);
+    background-color:var(--vellum);
+    background-image:
+      radial-gradient(80% 60% at 15% 10%, rgba(120,90,40,.14), transparent 60%),
+      radial-gradient(70% 50% at 90% 85%, rgba(120,90,40,.16), transparent 55%),
+      radial-gradient(30% 22% at 70% 35%, rgba(110,70,30,.10), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.27 0 0 0 0 0.13 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23v)'/%3E%3C/svg%3E");
+  }
+  .style-badge{
+    position:fixed;top:0;left:0;z-index:10;
+    background:var(--rubric);color:#f0e3c2;
+    font-family:"Cinzel",serif;font-size:13px;letter-spacing:.12em;
+    padding:8px 16px;box-shadow:0 2px 10px rgba(0,0,0,.3);
+  }
+  /* The codex page: a ruled frame with wide margins */
+  .wrap{
+    max-width:740px;margin:34px auto;padding:54px 60px 70px;
+    background:rgba(255,250,235,.18);
+    border:2px solid var(--frame);
+    outline:1px solid var(--frame);outline-offset:5px;
+    box-shadow:0 20px 50px -34px rgba(40,28,12,.8);
+  }
+
+  .hero{text-align:center;padding:6px 0 18px;border-bottom:2px double var(--rubric);}
+  .ornament{color:var(--rubric);margin-bottom:6px;}
+  .ornament svg{width:60px;height:60px;}
+  h1{
+    font-family:"IM Fell English SC","IM Fell English",serif;font-weight:400;
+    font-size:clamp(34px,6.4vw,56px);line-height:1.08;
+    margin:0;color:var(--rubric);letter-spacing:.02em;
+  }
+  h1 .spqr{display:block;font-family:"Cinzel",serif;font-size:.22em;letter-spacing:.5em;color:var(--gold);margin-top:14px;}
+  .subtitle{font-style:italic;font-size:21px;color:var(--ink-soft);max-width:540px;margin:16px auto 0;}
+
+  .rubric-head{
+    font-family:"IM Fell English SC",serif;color:var(--rubric);
+    font-size:15px;letter-spacing:.18em;text-transform:uppercase;
+    margin:46px 0 10px;display:flex;align-items:center;gap:10px;
+  }
+  .rubric-head::before{content:"❧";color:var(--gold);font-size:18px;}
+
+  .intro p{text-align:justify;hyphens:auto;}
+  .intro .lead::first-letter{
+    font-family:"Cinzel",serif;float:left;font-size:78px;line-height:.72;
+    margin:8px 12px 0 0;padding:8px 12px;color:#fff;font-weight:700;
+    background:var(--rubric);box-shadow:0 0 0 3px var(--gold);
+  }
+
+  /* Dice — a boxed marginal device */
+  .dice{
+    text-align:center;margin:34px 0;padding:26px 24px;
+    border:2px solid var(--rubric);background:rgba(156,44,29,.05);
+  }
+  .dice h2{font-family:"IM Fell English SC",serif;font-size:19px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px;color:var(--rubric);}
+  .die{width:70px;height:70px;margin:8px auto 14px;color:var(--rubric);}
+  .roll-btn{
+    font-family:"IM Fell English SC",serif;font-size:16px;letter-spacing:.12em;text-transform:uppercase;
+    background:var(--rubric);color:#f0e3c2;border:none;cursor:pointer;
+    padding:12px 28px;transition:.2s;border-radius:2px;
+  }
+  .roll-btn:hover{background:var(--rubric-br);}
+  .result{margin-top:20px;padding-top:16px;border-top:1px solid var(--frame);}
+  .roll-num{font-family:"Cinzel",serif;font-size:28px;color:var(--gold);letter-spacing:.05em;}
+  .result p{margin:6px 0 0;font-style:italic;color:var(--ink-soft);}
+
+  /* Card — like an illuminated catalogue entry */
+  .profile-card{
+    display:flex;gap:20px;padding:14px 16px;margin:14px 0;
+    border:1px solid var(--frame);border-left:4px solid var(--rubric);
+    background:rgba(255,250,235,.25);
+  }
+  .card-thumb{flex:0 0 110px;overflow:hidden;border:1px solid var(--frame);}
+  .card-thumb svg{display:block;width:100%;height:100%;}
+  .card-body{flex:1;}
+  .numeral{font-family:"IM Fell English SC",serif;color:var(--gold);font-size:15px;letter-spacing:.26em;text-transform:uppercase;}
+  .card-body h3{font-family:"IM Fell English SC",serif;font-weight:400;font-size:26px;margin:2px 0;color:var(--rubric);}
+  .role{margin:0;color:var(--ink);font-style:italic;}
+  .era{margin:2px 0 12px;color:var(--ink-soft);font-style:italic;font-size:18px;}
+  .weight-bar{height:9px;background:var(--vellum-dk);overflow:hidden;border:1px solid var(--frame);}
+  .weight-bar span{display:block;height:100%;background:var(--rubric);}
+  .weight-label{display:block;margin-top:7px;font-size:15px;letter-spacing:.05em;color:var(--ink-soft);font-family:"IM Fell English SC",serif;text-transform:uppercase;}
+
+  .prose{text-align:justify;hyphens:auto;}
+  .prose h2{font-family:"IM Fell English SC",serif;font-weight:400;font-size:24px;color:var(--rubric);margin:30px 0 8px;letter-spacing:.04em;text-transform:uppercase;}
+  .prose p{margin:0 0 16px;}
+  .prose strong{color:var(--rubric);font-weight:400;font-style:italic;}
+
+  footer{text-align:center;font-style:italic;color:var(--ink-soft);font-size:18px;margin-top:40px;border-top:2px double var(--rubric);padding-top:20px;}
+  .nav{position:fixed;bottom:18px;right:18px;display:flex;gap:8px;z-index:10;}
+  .nav a{font-family:"Cinzel",serif;font-size:12px;letter-spacing:.1em;text-decoration:none;background:var(--rubric);color:#f0e3c2;padding:8px 12px;}
+</style>
+</head>
+<body>
+<div class="style-badge">STYLE 4 · PARCHMENT / MANUSCRIPT</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="ornament">
+      <svg viewBox="0 0 60 60" fill="currentColor"><path d="M30 6 C22 18 8 18 8 30 C8 42 22 44 30 54 C38 44 52 42 52 30 C52 18 38 18 30 6 Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="30" cy="30" r="4"/></svg>
+    </div>
+    <h1>Ten Lives Under Rome<span class="spqr">S · P · Q · R</span></h1>
+    <p class="subtitle">A probabilistic portrait of who you would have been, had you been born somewhere in the Roman world between 100 BC and 420 AD.</p>
+  </header>
+
+  <div class="rubric-head">Incipit · The Premise</div>
+  <section class="intro">
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit.</p>
+  </section>
+
+  <div class="rubric-head">Sortes · Cast the Lots</div>
+  <section class="dice">
+    <h2>Cast the Dice</h2>
+    <div class="die">
+      <svg viewBox="0 0 64 64" fill="none"><rect x="8" y="8" width="48" height="48" rx="6" fill="rgba(156,44,29,.08)" stroke="currentColor" stroke-width="2.5"/><circle cx="22" cy="22" r="4" fill="currentColor"/><circle cx="42" cy="22" r="4" fill="currentColor"/><circle cx="32" cy="32" r="4" fill="currentColor"/><circle cx="22" cy="42" r="4" fill="currentColor"/><circle cx="42" cy="42" r="4" fill="currentColor"/></svg>
+    </div>
+    <button class="roll-btn">Cast · 1 to 1000</button>
+    <div class="result">
+      <span class="roll-num">CDLXXXVII &middot; 487</span>
+      <p>You are Lorem Ipsum — a provincial woman of Roman Egypt.</p>
+    </div>
+  </section>
+
+  <div class="rubric-head">Index · The Ten Lives</div>
+  <section class="card-demo">
+    <article class="profile-card">
+      <div class="card-thumb">
+        <svg viewBox="0 0 110 138" preserveAspectRatio="xMidYMid slice"><rect width="110" height="138" fill="#dccba3"/><circle cx="55" cy="52" r="22" fill="#9c2c1d"/><path d="M22 138 q33 -48 66 0 z" fill="#9c2c1d"/><rect x="5" y="5" width="100" height="128" fill="none" stroke="#b08a2c" stroke-width="2"/></svg>
+      </div>
+      <div class="card-body">
+        <span class="numeral">Caput &#8546;</span>
+        <h3>Lorem Ipsum Doloria</h3>
+        <p class="role">Provincial Woman · Roman Egypt</p>
+        <p class="era">Antonine era · 148–198 AD</p>
+        <div class="weight-bar"><span style="width:17.5%"></span></div>
+        <span class="weight-label">Roll 326–500 · 175 / 1000</span>
+      </div>
+    </article>
+  </section>
+
+  <div class="rubric-head">Vita · A Life</div>
+  <section class="prose">
+    <h2>Marriage and Mortality</h2>
+    <p><strong>Lorem ipsum dolor.</strong> Sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+
+  <footer>
+    These profiles are composites — fictional individuals built from demographic data, archaeology, and the historical record.
+  </footer>
+</div>
+
+<nav class="nav">
+  <a href="index.html">⊞ All Styles</a>
+  <a href="1-marble-and-gold.html">Next →</a>
+</nav>
+</body>
+</html>

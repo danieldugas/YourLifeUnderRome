@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m http.server 8753 --bind 127.0.0.1)",
+      "Bash(curl -s -o /dev/null -w \"index.html        -> HTTP %{http_code}\\\\n\" http://127.0.0.1:8753/style-previews/index.html)",
+      "Bash(curl -s -o /dev/null -w \"1-marble          -> HTTP %{http_code}\\\\n\" http://127.0.0.1:8753/style-previews/1-marble-and-gold.html)",
+      "Bash(curl -s -o /dev/null -w \"2-fresco          -> HTTP %{http_code}\\\\n\" http://127.0.0.1:8753/style-previews/2-fresco-pompeii.html)",
+      "Bash(curl -s -o /dev/null -w \"3-mosaic          -> HTTP %{http_code}\\\\n\" http://127.0.0.1:8753/style-previews/3-mosaic-and-stone.html)"
+    ]
+  }
+}

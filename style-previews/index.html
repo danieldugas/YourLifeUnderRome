@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choose a Style · Ten Lives Under Rome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{
+    margin:0;font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.55;
+    color:#2b2520;background:#262019;
+    background-image:radial-gradient(120% 80% at 50% 0%, #34291f, #1c1712);
+    min-height:100vh;padding:48px 20px 80px;
+  }
+  .head{text-align:center;color:#f0e3c2;max-width:760px;margin:0 auto 36px;}
+  .head h1{font-family:"Cinzel",serif;font-size:clamp(30px,5vw,46px);letter-spacing:.06em;margin:0 0 6px;}
+  .head h1 small{display:block;font-size:.4em;letter-spacing:.4em;color:#c8a13c;margin-top:10px;}
+  .head p{color:#cdbf9f;font-style:italic;margin:14px auto 0;max-width:600px;}
+  .grid{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;}
+  .card{
+    display:block;text-decoration:none;border-radius:8px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);transition:.18s;position:relative;
+    box-shadow:0 16px 36px -24px #000;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -22px #000;border-color:#c8a13c;}
+  .swatch{height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;position:relative;}
+  .swatch .title{font-family:"Cinzel",serif;font-size:21px;letter-spacing:.06em;}
+  .swatch .pals{display:flex;gap:6px;margin-top:8px;}
+  .swatch .pals i{width:20px;height:20px;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2);}
+  .meta{background:#1f1a14;color:#e7dcc4;padding:14px 16px;}
+  .meta .n{font-family:"Cinzel",serif;font-size:12px;letter-spacing:.2em;color:#c8a13c;}
+  .meta p{margin:4px 0 0;font-size:15px;color:#bcb29a;}
+  .open{display:inline-block;margin-top:8px;font-family:"Cinzel",serif;font-size:12px;letter-spacing:.12em;color:#c8a13c;}
+
+  /* swatch styles */
+  .s1{background:radial-gradient(120% 80% at 50% 0%, #fbf8f1, #efe7d6);color:#4b2354;}
+  .s1 .title{text-shadow:0 1px 0 #fff;}
+  .s2{background:linear-gradient(180deg,#a8392b,#8f2d22);color:#f6e6c6;}
+  .s3{background:linear-gradient(180deg,#3f4348,#2f3236);color:#f0e7cf;}
+  .s4{background:#e9dcbe;color:#9c2c1d;}
+
+  .note{max-width:760px;margin:34px auto 0;text-align:center;color:#bcb29a;font-style:italic;font-size:16px;}
+  .you-picked{display:inline-block;background:#9e342a;color:#f4e3c1;font-family:"Cinzel",serif;font-size:11px;letter-spacing:.14em;padding:4px 10px;border-radius:20px;position:absolute;top:10px;right:10px;}
+</style>
+</head>
+<body>
+  <div class="head">
+    <h1>Ten Lives Under Rome<small>CHOOSE A STYLE</small></h1>
+    <p>Four design directions for the site, each shown with the same content (hero, dice roller, a profile card, a prose section) so you can compare them fairly. Open each, then tell me which to build the full site in.</p>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="1-marble-and-gold.html">
+      <div class="swatch s1">
+        <span class="title">Marble &amp; Gold</span>
+        <div class="pals"><i style="background:#f4efe6"></i><i style="background:#b08d3f"></i><i style="background:#4b2354"></i><i style="background:#2b2520"></i></div>
+      </div>
+      <div class="meta"><span class="n">STYLE 1</span><p>Elegant &amp; monumental. Marble, imperial purple, gold. Museum-like.</p><span class="open">Open preview →</span></div>
+    </a>
+
+    <a class="card" href="2-fresco-pompeii.html">
+      <span class="you-picked">YOUR PICK</span>
+      <div class="swatch s2">
+        <span class="title">Fresco / Pompeii</span>
+        <div class="pals"><i style="background:#e7d6b4"></i><i style="background:#9e342a"></i><i style="background:#c69343"></i><i style="background:#241712"></i></div>
+      </div>
+      <div class="meta"><span class="n">STYLE 2</span><p>Painterly &amp; warm. Pompeian red, ochre, plaster panels. Lived-in.</p><span class="open">Open preview →</span></div>
+    </a>
+
+    <a class="card" href="3-mosaic-and-stone.html">
+      <div class="swatch s3">
+        <span class="title">Mosaic &amp; Stone</span>
+        <div class="pals"><i style="background:#d7d0c2"></i><i style="background:#2f6f86"></i><i style="background:#c8a13c"></i><i style="background:#a8412e"></i></div>
+      </div>
+      <div class="meta"><span class="n">STYLE 3</span><p>Bold &amp; tactile. Tessera bands, Greek key, stone &amp; sea-blue.</p><span class="open">Open preview →</span></div>
+    </a>
+
+    <a class="card" href="4-parchment-manuscript.html">
+      <div class="swatch s4">
+        <span class="title">Parchment</span>
+        <div class="pals"><i style="background:#e9dcbe"></i><i style="background:#3a2c1a"></i><i style="background:#9c2c1d"></i><i style="background:#b08a2c"></i></div>
+      </div>
+      <div class="meta"><span class="n">STYLE 4</span><p>Scholarly. Aged vellum, ink-brown, red rubrication. A codex.</p><span class="open">Open preview →</span></div>
+    </a>
+  </div>
+
+  <p class="note">You picked <strong style="color:#e7dcc4">Fresco / Pompeii</strong> earlier — it's flagged above. Compare the others, and confirm or switch.</p>
+</body>
+</html>
