@@ -39,6 +39,11 @@ def collect():
         for img in meta.get("images", []):
             if img.get("kind") == "commons":
                 yield (slug, img["key"], img["file"], img.get("caption", ""), img.get("why", ""))
+    # the hidden life's images, fetched the same way (group = its slug)
+    for img in M.SECRET.get("images", []):
+        if img.get("kind") == "commons":
+            yield (M.SECRET["slug"], img["key"], img["file"],
+                   img.get("caption", ""), img.get("why", ""))
 
 
 def strip_html(s):

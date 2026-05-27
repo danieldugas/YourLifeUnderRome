@@ -459,6 +459,19 @@ SECRET = {
                    "improbability of being you at all rather than one of the millions who "
                    "left no name.",
     "images": [
+        {"kind": "commons", "key": "bust",
+         "file": "File:Marble portrait head of Cleopatra VII, known as the 'Berlin Cleopatra'.jpg",
+         "caption": "The 'Berlin Cleopatra' — a marble portrait head carved in her own lifetime, "
+                    "c. 40–30 BC. Antikensammlung, Altes Museum, Berlin.",
+         "why": "One of only two sculpted portraits securely identified as Cleopatra VII — the "
+                "royal diadem and the 'melon' coiffure are her hallmarks. This is, as nearly as "
+                "marble allows, her actual face."},
+        {"kind": "commons", "key": "painting",
+         "file": "File:Posthumous painted portrait of Cleopatra VII of Egypt, from Herculaneum, Italy.jpg",
+         "caption": "Posthumous painted portrait of a red-haired royal woman wearing a diadem, "
+                    "from Herculaneum — widely identified as Cleopatra VII.",
+         "why": "Sealed under Vesuvius in 79 AD and thought to be the only surviving painted "
+                "portrait of Cleopatra from the ancient world."},
         {"kind": "ai", "key": "alexandria",
          "alt": "The royal harbour of Alexandria at dusk: palace colonnades, warships, "
                 "and the Pharos lighthouse beyond.",

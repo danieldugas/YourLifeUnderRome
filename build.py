@@ -512,6 +512,9 @@ def render_credits(template, profiles, credits):
     rows = []
     for ref, rec in credits.items():
         group = ref.split("/", 1)[0]
+        if group == M.SECRET["slug"]:
+            continue  # the hidden life stays off the public credits page;
+                      # its images are attributed in place on its own page.
         who = slug_to_name.get(group, group)
         thumb = f'<img src="{rel}{rec["local"]}" alt="" loading="lazy">'
         title = rec.get("title", ref)

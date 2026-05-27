@@ -418,5 +418,35 @@
     "mime": "image/jpeg",
     "caption": "The Theodosian Walls of Constantinople.",
     "why": "\"Constantinople was secure behind its massive walls\" while the West unravelled."
+  },
+  "cleopatra/bust": {
+    "commons_file": "File:Marble portrait head of Cleopatra VII, known as the 'Berlin Cleopatra'.jpg",
+    "local": "images/cleopatra/bust.jpg",
+    "title": "Marble portrait head of Cleopatra VII, known as the 'Berlin Cleopatra'",
+    "artist": "Chappsnet",
+    "credit": "Own work",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Marble_portrait_head_of_Cleopatra_VII,_known_as_the_%27Berlin_Cleopatra%27.jpg",
+    "width": 1698,
+    "height": 2268,
+    "mime": "image/jpeg",
+    "caption": "The 'Berlin Cleopatra' — a marble portrait head carved in her own lifetime, c. 40–30 BC. Antikensammlung, Altes Museum, Berlin.",
+    "why": "One of only two sculpted portraits securely identified as Cleopatra VII — the royal diadem and the 'melon' coiffure are her hallmarks. This is, as nearly as marble allows, her actual face."
+  },
+  "cleopatra/painting": {
+    "commons_file": "File:Posthumous painted portrait of Cleopatra VII of Egypt, from Herculaneum, Italy.jpg",
+    "local": "images/cleopatra/painting.jpg",
+    "title": "Posthumous painted portrait of Cleopatra VII of Egypt, from Herculaneum, Italy",
+    "artist": "Ancient Roman artist from Herculaneum",
+    "credit": "Walker, Susan; Higgs, Peter (2001). Cleopatra of Egypt: From History to Myth. Princeton, N.J.: Princeton University Press. ISBN 9780691088358, p. 314. Previous versions were scanned from Fletcher, Joann. (2008). Cleopatra the Great: The Woman Behind the Legend. New York: Harper. ISBN 978-0-06-058558-7. Plates between pp. 246-247.",
+    "license": "Public domain",
+    "license_url": "",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Posthumous_painted_portrait_of_Cleopatra_VII_of_Egypt,_from_Herculaneum,_Italy.jpg",
+    "width": 1400,
+    "height": 1867,
+    "mime": "image/jpeg",
+    "caption": "Posthumous painted portrait of a red-haired royal woman wearing a diadem, from Herculaneum — widely identified as Cleopatra VII.",
+    "why": "Sealed under Vesuvius in 79 AD and thought to be the only surviving painted portrait of Cleopatra from the ancient world."
   }
 }
