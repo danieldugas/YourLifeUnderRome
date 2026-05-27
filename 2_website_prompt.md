@@ -13,3 +13,7 @@ Some thoughts:
 - It would be cool to have a nice illustration of bone dice, or even a 3d render
 - It would be really good if we could link to as many sources as possible, inspired from example by Brett Devereaux's ancient rome series and the texts they link to
 - It would be great if pictures of ancient objects could be contrasted with colourful illustrations of daily life, where the ancient object is restored and put into context
+<<<<<<< Updated upstream
+=======
+- Could link to Roman Legion marching citations in the legionnaire page
+>>>>>>> Stashed changes
