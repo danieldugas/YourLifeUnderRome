@@ -265,11 +265,11 @@ def fig_ai(img):
     prompt = img.get("prompt", "")
     cap = img.get("caption", "")
     alt = img.get("alt", cap)
-    return (f'<!-- AI illustration prompt: {prompt} -->\n'
+    return (f'<!-- Illustration prompt: {prompt} -->\n'
             f'<figure><div class="ai-slot" role="img" aria-label="{esc(alt)}">'
-            f'{QUILL_SVG}<span class="tag">Illustration to be generated</span></div>'
-            f'<figcaption>{esc(cap)}<span class="why">Daily-life scene — a generated '
-            f'image will live here.</span></figcaption></figure>')
+            f'{QUILL_SVG}<span class="tag">Illustration to come</span></div>'
+            f'<figcaption>{esc(cap)}<span class="why">Daily-life scene — a painted '
+            f'illustration will live here.</span></figcaption></figure>')
 
 
 def band_bar(roll_min, weight, color_cls):
@@ -486,8 +486,8 @@ def render_profile(template, p, prev_p, next_p, credits,
   <div class="rubric">Sources &amp; Further Reading</div>
   <div class="sources"><ul>{sources}</ul>
     <p style="font-style:italic;color:var(--ink-soft);font-size:15px">
-      Every image above is a real museum artifact or photograph; full attribution on the
-      <a href="{rel}credits.html">credits page</a>.</p>
+      The images above are real museum artifacts and photographs, or commissioned illustrations;
+      full attribution on the <a href="{rel}credits.html">credits page</a>.</p>
   </div>
 
   {pager}
@@ -548,9 +548,10 @@ def render_credits(template, profiles, credits):
     mortality rates, prices, distances and events are drawn from the historical evidence; the
     person is not.</p>
     <p>The illustrations are, wherever possible, <strong>real artifacts and museum photographs</strong>
-    from Wikimedia Commons, each chosen because it connects directly to the life it accompanies.
-    They remain under the licenses of their creators, credited below. Scenes marked
-    &ldquo;illustration to be generated&rdquo; are slots for period-style illustrations still to be made.</p>
+    from Wikimedia Commons, each chosen because it connects directly to the life it accompanies, plus a
+    few <strong>commissioned illustrations</strong>. They remain under the licenses of their creators,
+    credited below. Scenes marked &ldquo;illustration to come&rdquo; are slots for period-style
+    illustrations still to be painted.</p>
   </div>
 
   <div class="rubric">General Reading &amp; Inspiration</div>
@@ -631,14 +632,14 @@ def write_lives_index(profiles):
 
 
 def write_image_prompts(profiles):
-    """Emit IMAGE_PROMPTS.md: ready-to-use prompts for the AI daily-life slots."""
+    """Emit IMAGE_PROMPTS.md: ready-to-use prompts for the daily-life illustration slots."""
     lines = [
         "# Image prompts — daily-life illustrations",
         "",
-        "Each profile has one *generated illustration* slot for a daily-life scene that no "
-        "single museum artifact captures. Generate an image from the prompt, save it to the "
-        "shown path, then add a `commons`-style entry (or just reference the file) so the "
-        "build drops it in. The shared style suffix keeps them consistent.",
+        "Each profile has one *illustration* slot for a daily-life scene that no single museum "
+        "artifact captures. Commission or draw it (and only as a last resort generate one) from the "
+        "prompt below, save it to the shown path, then add a `commons`-style entry (or just "
+        "reference the file) so the build drops it in. The shared style suffix keeps them consistent.",
         "",
         "_(All other images on the site are real museum artifacts — see the credits page.)_",
         "",

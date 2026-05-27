@@ -27,7 +27,7 @@ designed to be served straight from GitHub Pages.
 | `templates/base.html` | Shared page skeleton (header/footer/fonts). Page bodies are assembled in `build.py`. |
 | `docs/` | **The website** (what GitHub Pages serves). Generated + static assets + images. |
 | `style-previews/` | The four design probes (Marble, Fresco, Mosaic, Parchment). Kept for reference. |
-| `IMAGE_PROMPTS.md` | Auto-generated prompts for the AI daily-life illustration slots. |
+| `IMAGE_PROMPTS.md` | Auto-generated prompts for the daily-life illustration slots (for a commissioned artist, or — last resort — image-gen). |
 
 Inside `docs/`:
 
@@ -79,8 +79,8 @@ python3 -m http.server -d docs 8000
 - **Adjust the odds** → edit the `**Roll: a–b (w out of 1,000)**` line in the draft.
 - **Add another real image** → add a `{"kind": "commons", "file": "File:…", …}` entry to that
   profile in `profiles_meta.py`, run `fetch_images.py` then `build.py`.
-- **Fill a daily-life illustration slot** → generate an image from the matching prompt in
-  `IMAGE_PROMPTS.md`, save it to the path shown, and wire it in.
+- **Fill a daily-life illustration slot** → commission or draw an illustration from the matching
+  prompt in `IMAGE_PROMPTS.md` (image-gen only as a last resort), save it to the path shown, wire it in.
 
 ## Sources & licensing
 

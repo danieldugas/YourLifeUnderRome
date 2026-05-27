@@ -10,8 +10,8 @@ Per-profile metadata that is NOT in the narrative draft:
 Keyed by the slug that build.py derives from the draft (slugify of the name).
 """
 
-# Shared style suffix for the AI daily-life illustration prompts, so generated
-# images read like period wall-painting and sit well beside real artifacts.
+# Shared style suffix for the daily-life illustration prompts, so the illustrations
+# read like period wall-painting and sit well beside real artifacts.
 AI_STYLE = (
     "Ancient Roman fresco / wall-painting style, matte plaster texture with fine "
     "cracks, warm earth-tone palette of ochre, Pompeian red and umber, naturalistic "
