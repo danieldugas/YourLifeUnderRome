@@ -349,7 +349,11 @@ def render_index(template, intro, profiles, credits):
         if first_commons:
             rec = credits.get(f'{p["slug"]}/{first_commons["key"]}')
             if rec:
-                thumb = f'<img src="{rel}{rec["local"]}" alt="{esc(p["name"])}" loading="lazy">'
+                # Optional per-image thumb crop hint (the index card crops via
+                # object-fit:cover; thumb_focus overrides the default centring).
+                focus = first_commons.get("thumb_focus")
+                style = f' style="object-position:{esc(focus)}"' if focus else ""
+                thumb = f'<img src="{rel}{rec["local"]}" alt="{esc(p["name"])}" loading="lazy"{style}>'
         cards.append(
             f'<a class="life-card" href="{p["url"]}">'
             f'<div class="thumb">{thumb}</div>'

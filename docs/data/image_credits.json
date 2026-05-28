@@ -448,5 +448,20 @@
     "mime": "image/jpeg",
     "caption": "Posthumous painted portrait of a red-haired royal woman wearing a diadem, from Herculaneum — widely identified as Cleopatra VII.",
     "why": "Sealed under Vesuvius in 79 AD and thought to be the only surviving painted portrait of Cleopatra from the ancient world."
+  },
+  "boudiga/claudius-britannia": {
+    "commons_file": "File:Aphrodisias Museum Claudius and Britannica 4638.jpg",
+    "local": "images/boudiga/claudius-britannia.jpg",
+    "title": "Aphrodisias Museum Claudius and Britannica 4638",
+    "artist": "Dosseman",
+    "credit": "Own work",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Aphrodisias_Museum_Claudius_and_Britannica_4638.jpg",
+    "width": 1400,
+    "height": 2104,
+    "mime": "image/jpeg",
+    "caption": "Marble relief of Claudius subduing Britannia, Sebasteion of Aphrodisias, c. 50 AD. Aphrodisias Museum, Turkey.",
+    "why": "Imperial propaganda carved during Claudius's reign — the emperor overpowering a personified Britannia. One of the very few surviving period images of anything like a Briton woman, though the figure is a Greco-Roman idealization (an amazon-style caricature), not a portrait of a real one."
   }
 }
